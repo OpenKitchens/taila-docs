@@ -1,0 +1,60 @@
+---
+title: 'Architecture'
+description: 'Docs intro'
+---
+
+**アーキテクチャについてやんわり話します**
+
+//メモ: それぞれの要素（taila API）とかは詳しく説明、又実装方法や使用法を書いたページのリンクにする。
+
+### 水Protocolの三大要素
+- MySQL
+- 水エンジン(Taila Engine)
+- 水ブラウザ/リンクUI(Taila browser/LinkUI)
+
+で成り立ちます
+
+そしてこれらの要素はそれぞれ独立したDockerコンテナとして実行されます
+
+そのためこれらの独立したコンテナ同士で通信を行うことで一つのアプリケーションのように動作します。
+
+<img src="/public/images/architecture/docker.png" alt="web2.0の構造" style="border-radius: 8px" />
+
+
+### 水エンジン(Taila Engine)
+水エンジン(Taila Engine)はこれらのコンポーネントを持ちます
+
+- Taila Identity
+- Taila API
+- Taila Call
+
+Taila Identityは自分の作成したアプリケーションや友人として登録されたノードリスト、hashによる信用値のデータベースへの保存、またはデータベースへのアクセスを担当します。
+Taila APIはリンクUIによって提供される基本的な機能です。
+Taila Callは他のノードとのp2p通信やデータベースへの編集とアクセスを提供します。
+
+Taila APIはリンクUIでブラウザでハイパーリンクオンリーで実行されるのに対し、
+Taila Callは他のノードへ通信したり、ベータベースの機能をアプリケーション向けに提供します。
+
+<img src="/public/images/architecture/callandapi.png" alt="web2.0の構造" style="border-radius: 8px" />
+
+
+### 水ブラウザ/リンクUI(Taila browser/LinkUI)
+水ブラウザ/リンクUI(Taila browser/LinkUI)はこれらのコンポーネントを持ちます
+
+- Taila Scheme Engine
+- Link UI
+- 許可システム
+
+水Protocolのスキーム`taila://`は通常のブラウザでは解釈不可能です。
+
+そのためTaila browserでスキームを解釈し、TailaEngineが提供するコンポーネントへ接続をします。
+
+TailaEngineからのレスポンスをリンクUIとして表示します。
+
+リンクUIはiOSやMacOS、その他多くのOSで見られる通知のような見たい目をしています。
+
+TailaEngineの強力なAPIをリンクUIによって直感的な操作で扱えます。
+
+また、取得したアプリケーションのJSがデータベースなどリスクのある情報を求めて来たときに許可をするかをポップアップします。
+
+水ブラウザはChromeの拡張機能やfirefoxの拡張機能として提供するためお気に入りのブラウザで水Protocolの世界を楽しめます。（やったぜ）

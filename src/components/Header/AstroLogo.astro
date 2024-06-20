@@ -1,0 +1,51 @@
+---
+type Props = {
+  size: number;
+};
+const { size } = Astro.props;
+---
+
+<svg
+  class="logo"
+  width={size}
+  height={size}
+  viewBox="0 0 256 256"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <style>
+    #flame {
+      fill: var(--theme-text-accent);
+    }
+
+    #a {
+      fill: var(--theme-text-accent);
+    }
+  </style>
+  <title>Logo</title>
+  <path
+    d="M108.413 1H92.6978V218.393H108.413V1Z"
+    fill="white"
+    stroke="white"
+    stroke-width="1.5"></path>
+  <path
+    d="M1 79.818L1 95.5332H63.8601V79.818H1Z"
+    fill="white"
+    stroke="white"
+    stroke-width="1.5"></path>
+  <path
+    d="M1.03921 172.891L14.5096 180.985L75.3083 79.7989L56.9746 79.799L1.03921 172.891Z"
+    fill="white"
+    stroke="white"
+    stroke-width="1.5"></path>
+  <path
+    d="M201 79.818V95.5332H138.131V79.818H201Z"
+    fill="white"
+    stroke="white"
+    stroke-width="1.5"></path>
+  <path
+    d="M200.97 172.891L187.497 180.985L126.69 79.799L145.026 79.799L200.97 172.891Z"
+    fill="white"
+    stroke="white"
+    stroke-width="1.5"></path>
+</svg>
